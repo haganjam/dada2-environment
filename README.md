@@ -2,7 +2,7 @@
 
 DADA2 is an amplicon sequencing pipeline. This repository describes the development of a Docker container which hosts R along with the dada2 package and its dependencies. Moreover, the container allows users to use this containerised environment via an RStudio IDE that is run through the browser.
 
-The container was created from a recent version of the the rocker/verse image (rocker/r-ver:4.4.2) (see https://rocker-project.org/images/ for details). This image was adapted to run linux/amd64 via emulation and the relevant packages were installed that are required to run the dada2 pipeline.
+The container was created from a recent version of the the rocker/verse image (rocker/r-ver:4.4.2) (see https://rocker-project.org/images/ for details). This image was built to run linux/arm64 via emulation and the relevant packages were installed that are required to run the dada2 pipeline.
 
 I plan to use this container for a set of upcoming bioinformatic analyses in order to maintain reproducibility.
 
@@ -26,13 +26,13 @@ It should ask for a username (rstudio) and password (specified in the terminal w
 
 ## Example
 
-Build the image on my local computer:
+Navigate to the folder containing the Dockerfile. Then build the image on my local computer:
 
-+ docker build --build-arg TARGETPLATFORM=linux/arm64 -t haganjam/dada2-env:v1 .
++ docker build -t haganjam/dada2-env:v1 .
 
-Create a container instance:
+Create a container instance running the linux/arm64:
 
-+ docker run --rm -p 8787:8787 -v /path/to/repository:/home/rstudio/ --platform linux/amd64 haganjam/dada2-env:v1
++ docker run --rm -p 8787:8787 -v /path/to/repository:/home/rstudio/ --platform linux/arm64 haganjam/dada2-env:v1
 
 
 
